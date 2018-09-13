@@ -1,0 +1,84 @@
+body {
+    background-color: #343a40 !important;
+}
+.btn-hapus {
+    margin-left: 20px !important;
+}
+#wrapper {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+#judul{
+    color: red;
+}
+#subjudul{
+    color: blue;
+}
+.red-font{
+    color: red;
+    font-size: 24px;
+}
+h4{
+    color: chocolate;
+}
+.center {
+    text-align: center;
+}
+.thin-red-border {
+    border-color: red;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 16px;
+    padding: 8px;
+    margin-bottom: 5px;
+}
+.btn {
+    width: 80px;
+    margin: 16px;
+    padding: 4px;
+}
+.Card {
+    border-radius: 24px;
+    opacity: 0.8;
+}
+.card h5 {
+    font-family: ubuntu;
+}
+p{
+    display: block;
+}
+.jumbotron-background {
+    background: url("img/a3.jpeg") center center;
+    
+}
+.active {
+    background-color: black;
+    color: white !important;
+    border-radius: 5px;
+}
+.btn-ku{
+    border: 1px  darkslategray !important;
+}
+.jumbo {
+    color: cadetblue !important;
+    background-color: aquamarine;
+    padding: 30px;
+    opacity: 0.8;
+    border-radius: 12px;
+}
+.white-text {
+    color: white !important;
+    font-weight: 700;
+}
+.footer-style {
+    height: 30%; 
+    margin-top: 80px;
+    margin-bottom: 0px;
+    color: white;
+    background-color: darkslategray !important;
+}
+.footer-style p {
+    padding: 90px;
+    text-align: center;
+    font-family: ubuntu;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TodoList 2.0</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="shortcut icon" href="img/syy.png">
+    <script type="text/javascript">
+        window.onload = function() { jam(); }
+        function jam() {
+         var e = document.getElementById('jam'),
+         d = new Date(), h, m, s;
+         h = d.getHours();
+         m = set(d.getMinutes());
+         s = set(d.getSeconds());
+         e.innerHTML = h +':'+ m +':'+ s;
+         setTimeout('jam()', 1000);
+        }
+   
+        function set(e) {
+            e = e < 10 ? '0'+ e : e;
+            return e;
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: darkslategray;">
+        <a class="navbar-brand white-text" href="index.html" style="font-family: ubuntu">TodoList 2.0</a>
+    </nav>
+    <div class="container">
+        <div id="wrapper">
+            <div class="row">
+                <h2 style="font-family: ubuntu; background-color: darkcyan; border-radius: 15px; padding: 5px;" id="jam" class="white-text"></h2>
+            </div>
+            <h1 class="white-text" align="center" id="salam" style="font-family: ubuntu;">"Welcome to TodoList 2.0" </h1>
+            <div class="card Card">
+                <div class="card-body">
+                    <h4>What you Want to Do?</h4>
+                    <div class="center">
+                        <input type="text" class="form-control" id="input-todo" placeholder="Input Todo Here" autofocus>
+                        <button type="submit" class="btn btn-outline-info" id="add-button" title="Note your List"><i class="fa fa-pencil"></i></button>
+                    </div>
+                    <br>
+                    <h4>Your List here :</h4>
+                    <table id="list" class="table">
+                        <tbody>
+                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-style">
+        <p class="white-text">KHOIRUN NAAS ANFA’UHUM LIN NAAS
+        <br>“The best humans are the most beneficial to humans (HR. Ahmad)”</p>
+    </footer>
+    <script src="jquery.js"></script>
+    <script src="bootstrap.js"></script>
+
+    <script>
+        let todos =[];
+        const listDOM = document.getElementById('list');
+        const inputDOM = document.getElementById('input-todo');
+        const addDOM = document.getElementById('add-button');
+
+        const data = JSON.parse(localStorage.getItem('todos'));
+        console.log(data);
+        if(data != null){
+            todos = data;
+        }
+
+        function render(){
+            let index = 0;
+            listDOM.innerHTML = "";
+            while(index < todos.length){
+                console.log(index)
+                listDOM.innerHTML += '<td width="80%">'+ todos[index] +'</td> <td><button onclick="hapus('+ index +')" class="btn btn-outline-dark btn-sm" title="Remove"><i class="fa fa-remove"></i></button></td>'
+                index = index + 1
+            }
+        }
+        render();
+
+        addDOM.addEventListener('click', function(){
+            const todo = inputDOM.value;
+            todos.push(todo);
+            render();
+            inputDOM.value = "";
+            console.log(todos)
+            
+            localStorage.setItem('todos', JSON.stringify(todos));
+        })
+
+    // addDOM.addEventListener('click', function(){
+    //     console.log("cobaaa")
+    //     const todo = inputDOM.value;
+    //     console.log(todo, '>>>>>')
+    //     todos.push(todo);
+    //     console.log(todos, ">>>>")
+    //     render();
+    //     inputDOM.value= "";
+    //     localStorage.setItem('todos', JSON.stringify(todos));
+    // })
+
+      function hapus(index){
+          todos.splice(index, 1)
+          render();
+          localStorage.setItem('todos', JSON.stringify(todos));
+      }
+
+    </script>
+</body>
+</html>
